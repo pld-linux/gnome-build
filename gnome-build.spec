@@ -8,13 +8,13 @@ Group:		Development/Tools
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/0.1/%{name}-%{version}.tar.bz2
 # Source0-md5:	eb3d68c661f2ff0f92bb97ab14749805
 Patch0:		%{name}-libgbfmarshal_list.patch
-Buildrequires:	gdl-devel >= 0.3.0
+BuildRequires:	gdl-devel >= 0.3.0
 BuildRequires:	gnome-vfs2-devel >= 2.3.5
-Buildrequires:	libbonoboui-devel >= 2.3.3
+BuildRequires:	libbonoboui-devel >= 2.3.3
 BuildRequires:	libglade2-devel
 BuildRequires:	libgnomeui-devel >= 2.3.3
 BuildRequires:	libxml2-devel >= 2.5.8
-Buildrequires:	perl
+BuildRequires:	perl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
