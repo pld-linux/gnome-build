@@ -40,6 +40,7 @@ Pliki nag³ówkowe gnome-build.
 %patch0 -p1
 
 %build
+cp -f /usr/share/automake/config.sub .
 %configure \
 	--enable-compile-warnings=maximum
 %{__make}
