@@ -40,7 +40,8 @@ Pliki nag³ówkowe gnome-build.
 %patch0 -p1
 
 %build
-%configure
+%configure \
+	--enable-compile-warnings=maximum
 %{__make}
 
 %install
