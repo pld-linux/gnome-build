@@ -24,14 +24,14 @@ GNOME Build Framework (GBF).
 Struktura GNOME Build (GBF).
 
 %package devel
-Summary:  Header files for gnome-build
-Summary(pl):  Pliki nag³ówkowe gnome-build
-Group:    Development/Libraries
-Requires: %{name} = %{version}
-                                                                                
+Summary:	Header files for gnome-build
+Summary(pl):	Pliki nag³ówkowe gnome-build
+Group:		Development/Libraries
+Requires:	%{name} = %{version}
+
 %description devel
 Header files for gnome-build.
-                                                                                
+
 %description devel -l pl
 Pliki nag³ówkowe gnome-build.
 
