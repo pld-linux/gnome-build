@@ -8,13 +8,14 @@ Group:		Development/Tools
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/0.1/%{name}-%{version}.tar.bz2
 # Source0-md5:	eb3d68c661f2ff0f92bb97ab14749805
 Patch0:		%{name}-libgbfmarshal_list.patch
+BuildRequires:	automake
 BuildRequires:	gdl-devel >= 0.3.0
 BuildRequires:	gnome-vfs2-devel >= 2.3.5
 BuildRequires:	libbonoboui-devel >= 2.3.3
 BuildRequires:	libglade2-devel
 BuildRequires:	libgnomeui-devel >= 2.3.3
 BuildRequires:	libxml2-devel >= 2.5.8
-BuildRequires:	perl
+BuildRequires:	perl-base
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -27,7 +28,7 @@ Struktura GNOME Build (GBF).
 Summary:	Header files for gnome-build
 Summary(pl):	Pliki nag³ówkowe gnome-build
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for gnome-build.
@@ -56,8 +57,8 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files -f gbf-1.lang
 %defattr(644,root,root,755)
