@@ -14,7 +14,6 @@ BuildRequires:	libbonoboui-devel >= 2.15.0
 BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libgnomeui-devel >= 2.15.91
 BuildRequires:	libxml2-devel >= 1:2.6.26
-BuildRequires:	libselinux-devel
 BuildRequires:	perl-base
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
