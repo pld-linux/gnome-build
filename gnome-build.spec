@@ -2,18 +2,18 @@ Summary:	GNOME Build Framework (GBF)
 Summary(pl):	Struktura GNOME Build (GBF)
 Name:		gnome-build
 Version:	0.1.3
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Tools
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-build/0.1/%{name}-%{version}.tar.bz2
 # Source0-md5:	7a879bfa906036c8546cea88eb6fe793
 BuildRequires:	automake
-BuildRequires:	gdl-devel >= 0.5.0
-BuildRequires:	gnome-vfs2-devel >= 2.3.5
-BuildRequires:	libbonoboui-devel >= 2.3.3
-BuildRequires:	libglade2-devel
-BuildRequires:	libgnomeui-devel >= 2.3.3
-BuildRequires:	libxml2-devel >= 2.5.8
+BuildRequires:	gdl-devel >= 0.6.1
+BuildRequires:	gnome-vfs2-devel >= 2.15.91
+BuildRequires:	libbonoboui-devel >= 2.15.0
+BuildRequires:	libglade2-devel >= 1:2.6.0
+BuildRequires:	libgnomeui-devel >= 2.15.91
+BuildRequires:	libxml2-devel >= 1:2.6.26
 BuildRequires:	libselinux-devel
 BuildRequires:	perl-base
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -69,6 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/%{name}-1.0/backends/lib*.so*
 %{_libdir}/%{name}-1.0/backends/lib*.la
 %{_libdir}/%{name}-1.0/backends/gbf-am.server
+%{_libdir}/%{name}-1.0/backends/gbf-mkfile.server
 %{_datadir}/%{name}
 %{_pixmapsdir}/*
 
