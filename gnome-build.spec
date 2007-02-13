@@ -1,5 +1,5 @@
 Summary:	GNOME Build Framework (GBF)
-Summary(pl.UTF-8):   Struktura GNOME Build (GBF)
+Summary(pl.UTF-8):	Struktura GNOME Build (GBF)
 Name:		gnome-build
 Version:	0.1.4
 Release:	1
@@ -25,7 +25,7 @@ Struktura GNOME Build (GBF).
 
 %package devel
 Summary:	Header files for gnome-build
-Summary(pl.UTF-8):   Pliki nagłówkowe gnome-build
+Summary(pl.UTF-8):	Pliki nagłówkowe gnome-build
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gdl-devel >= 0.7.0
