@@ -1,12 +1,12 @@
 Summary:	GNOME Build Framework (GBF)
 Summary(pl.UTF-8):	Struktura GNOME Build (GBF)
 Name:		gnome-build
-Version:	0.1.6
+Version:	0.2.0
 Release:	1
 License:	GPL
 Group:		Development/Tools
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-build/0.1/%{name}-%{version}.tar.bz2
-# Source0-md5:	ea811be15dd042f2512e8ac3f2bef541
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-build/0.2/%{name}-%{version}.tar.bz2
+# Source0-md5:	97ba7c81f47c39b191d9aae9ea173084
 BuildRequires:	automake
 BuildRequires:	gdl-devel >= 0.7.5
 BuildRequires:	gnome-vfs2-devel >= 2.18.1
@@ -43,7 +43,7 @@ Pliki nagłówkowe gnome-build.
 cp -f /usr/share/automake/config.sub .
 %configure \
 	--enable-compile-warnings=maximum
-%{__make}
+%{__make} -j1
 
 %install
 rm -rf $RPM_BUILD_ROOT
