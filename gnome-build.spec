@@ -2,7 +2,7 @@ Summary:	GNOME Build Framework (GBF)
 Summary(pl.UTF-8):	Struktura GNOME Build (GBF)
 Name:		gnome-build
 Version:	0.2.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Tools
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-build/0.2/%{name}-%{version}.tar.bz2
@@ -15,6 +15,8 @@ BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libgnomeui-devel >= 2.18.1
 BuildRequires:	libxml2-devel >= 1:2.6.28
 BuildRequires:	perl-base
+# sr@Latn vs. sr@latin
+Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -51,6 +53,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
+	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
 %find_lang gbf-1
 
 %clean
