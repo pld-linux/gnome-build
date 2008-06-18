@@ -7,16 +7,18 @@ License:	GPL
 Group:		Development/Tools
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-build/0.3/%{name}-%{version}.tar.bz2
 # Source0-md5:	f998c1e5676c3602937413f4f20f1572
+BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gdl-devel >= 0.7.5
 BuildRequires:	gnome-vfs2-devel >= 2.18.1
 BuildRequires:	libbonoboui-devel >= 2.18.0
 BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libgnomeui-devel >= 2.18.1
+BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.28
 BuildRequires:	perl-base
 BuildRequires:	perl-Locale-gettext
-BuildRequires:	sed
+BuildRequires:	sed >= 4.0
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
