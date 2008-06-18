@@ -3,21 +3,23 @@ Summary(pl.UTF-8):	Struktura GNOME Build (GBF)
 Name:		gnome-build
 Version:	0.3.0
 Release:	1
-License:	GPL
+License:	GPL v2+
 Group:		Development/Tools
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-build/0.3/%{name}-%{version}.tar.bz2
 # Source0-md5:	f998c1e5676c3602937413f4f20f1572
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	gdl-devel >= 0.7.5
 BuildRequires:	gnome-vfs2-devel >= 2.18.1
+BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libbonoboui-devel >= 2.18.0
 BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libgnomeui-devel >= 2.18.1
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.28
-BuildRequires:	perl-base
+BuildRequires:	perl-base >= 5.005
 BuildRequires:	perl-Locale-gettext
+BuildRequires:	pkgconfig
 BuildRequires:	sed >= 4.0
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
@@ -62,6 +64,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+rm $RPM_BUILD_ROOT%{_libdir}/%{name}-1.0/backends/*.la
+
 [ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
 	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
 %find_lang gbf-1
@@ -75,21 +79,26 @@ rm -rf $RPM_BUILD_ROOT
 %files -f gbf-1.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/lib*.so.2
+%attr(755,root,root) %{_bindir}/gbf-am-parse
+%attr(755,root,root) %{_bindir}/gbf-mkfile-parse
+%attr(755,root,root) %{_libdir}/libgbf-1.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgbf-1.so.2
+%attr(755,root,root) %{_libdir}/libgbf-widgets-1.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgbf-widgets-1.so.2
 %dir %{_libdir}/%{name}-1.0
 %dir %{_libdir}/%{name}-1.0/backends
-%attr(755,root,root) %{_libdir}/%{name}-1.0/backends/lib*.so*
-%{_libdir}/%{name}-1.0/backends/lib*.la
+%attr(755,root,root) %{_libdir}/%{name}-1.0/backends/libgbf-am.so
+%attr(755,root,root) %{_libdir}/%{name}-1.0/backends/libgbf-mkfile.so
 %{_libdir}/%{name}-1.0/backends/gbf-am.server
 %{_libdir}/%{name}-1.0/backends/gbf-mkfile.server
 %{_datadir}/%{name}
-%{_pixmapsdir}/*
+%{_pixmapsdir}/gbf-*.png
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libgbf-1.so
+%attr(755,root,root) %{_libdir}/libgbf-widgets-1.so
+%{_libdir}/libgbf-1.la
+%{_libdir}/libgbf-widgets-1.la
 %{_includedir}/%{name}-1.0
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_pkgconfigdir}/*
+%{_pkgconfigdir}/gnome-build-1.0.pc
