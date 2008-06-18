@@ -1,12 +1,12 @@
 Summary:	GNOME Build Framework (GBF)
 Summary(pl.UTF-8):	Struktura GNOME Build (GBF)
 Name:		gnome-build
-Version:	0.2.0
-Release:	2
+Version:	0.3.0
+Release:	1
 License:	GPL
 Group:		Development/Tools
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-build/0.2/%{name}-%{version}.tar.bz2
-# Source0-md5:	97ba7c81f47c39b191d9aae9ea173084
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-build/0.3/%{name}-%{version}.tar.bz2
+# Source0-md5:	f998c1e5676c3602937413f4f20f1572
 BuildRequires:	automake
 BuildRequires:	gdl-devel >= 0.7.5
 BuildRequires:	gnome-vfs2-devel >= 2.18.1
@@ -15,6 +15,8 @@ BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libgnomeui-devel >= 2.18.1
 BuildRequires:	libxml2-devel >= 1:2.6.28
 BuildRequires:	perl-base
+BuildRequires:	perl-Locale-gettext
+BuildRequires:	sed
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -42,9 +44,14 @@ Pliki nagłówkowe gnome-build.
 %setup -q
 
 %build
-cp -f /usr/share/automake/config.sub .
+%{__libtoolize}
+%{__aclocal}
+%{__autoheader}
+%{__autoconf}
+%{__automake}
 %configure \
 	--enable-compile-warnings=maximum
+sed -i 's/#define NATIVE_GNU_REGEX 1//' config.h
 %{__make} -j1
 
 %install
@@ -68,6 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/lib*.so.2
 %dir %{_libdir}/%{name}-1.0
 %dir %{_libdir}/%{name}-1.0/backends
 %attr(755,root,root) %{_libdir}/%{name}-1.0/backends/lib*.so*
