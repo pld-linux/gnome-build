@@ -1,26 +1,25 @@
 Summary:	GNOME Build Framework (GBF)
 Summary(pl.UTF-8):	Struktura GNOME Build (GBF)
 Name:		gnome-build
-Version:	0.3.0
+Version:	2.24.0
 Release:	1
 License:	GPL v2+
 Group:		Development/Tools
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-build/0.3/%{name}-%{version}.tar.bz2
-# Source0-md5:	f998c1e5676c3602937413f4f20f1572
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-build/2.24/%{name}-%{version}.tar.bz2
+# Source0-md5:	447b6c22bb18981b964b76031d393b42
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
-BuildRequires:	gdl-devel >= 0.7.5
-BuildRequires:	gnome-vfs2-devel >= 2.18.1
-BuildRequires:	intltool >= 0.35.0
-BuildRequires:	libbonoboui-devel >= 2.18.0
-BuildRequires:	libglade2-devel >= 1:2.6.0
-BuildRequires:	libgnomeui-devel >= 2.18.1
+BuildRequires:	gdl-devel >= 2.24.0
+BuildRequires:	gnome-common >= 2.24.0
+BuildRequires:	gtk+2-devel >= 2:2.14.0
+BuildRequires:	intltool >= 0.40.0
+BuildRequires:	libbonoboui-devel >= 2.24.0
+BuildRequires:	libglade2-devel >= 1:2.6.2
+BuildRequires:	libgnomeui-devel >= 2.24.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.28
 BuildRequires:	perl-base >= 5.005
-BuildRequires:	perl-Locale-gettext
 BuildRequires:	pkgconfig
-BuildRequires:	sed >= 4.0
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -36,7 +35,7 @@ Summary:	Header files for gnome-build
 Summary(pl.UTF-8):	Pliki nagłówkowe gnome-build
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gdl-devel >= 0.7.5
+Requires:	gdl-devel >= 2.24.0
 
 %description devel
 Header files for gnome-build.
@@ -50,13 +49,11 @@ Pliki nagłówkowe gnome-build.
 %build
 %{__libtoolize}
 %{__aclocal}
-%{__autoheader}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
-%configure \
-	--enable-compile-warnings=maximum
-sed -i 's/#define NATIVE_GNU_REGEX 1//' config.h
-%{__make} -j1
+%configure
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -66,8 +63,6 @@ rm -rf $RPM_BUILD_ROOT
 
 rm $RPM_BUILD_ROOT%{_libdir}/%{name}-1.0/backends/*.la
 
-[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
-	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
 %find_lang gbf-1
 
 %clean
