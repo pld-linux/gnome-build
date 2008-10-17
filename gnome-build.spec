@@ -18,6 +18,7 @@ BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libgnomeui-devel >= 2.24.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.28
+BuildRequires:	perl-Locale-gettext
 BuildRequires:	perl-base >= 5.005
 BuildRequires:	pkgconfig
 # sr@Latn vs. sr@latin
