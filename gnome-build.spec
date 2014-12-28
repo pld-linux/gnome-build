@@ -10,7 +10,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-build/2.24/%{name}-%{versi
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	gdl-devel >= 2.24.0
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gtk+2-devel >= 2:2.14.0
 BuildRequires:	intltool >= 0.40.0
